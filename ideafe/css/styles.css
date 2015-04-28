@@ -1,0 +1,125 @@
+html{
+	height:100%;
+}
+
+body{
+	height:100%;
+	width:100%;
+}
+
+body .container{
+	min-height:100%;
+	position:relative;
+}
+
+body header{
+	height:133px;
+	background-image:url(../image/header.jpg);
+}
+
+body nav{
+	margin:9px 0;
+	padding:0 30px;
+}
+
+body .navbar-form{
+	padding:0 30px;
+}
+
+body .navbar-form .form-group, body .navbar-form .form-group .form-control{
+	width:100%;
+}
+
+body aside hr{
+	margin:0 0 0 30px;
+}
+
+body aside{
+	height:450px;
+	overflow: hidden; /* Обрезаем все, что не помещается в область */
+}
+
+body aside .place{
+	width:425px;
+	height:110px;
+	margin-left:30px;
+	padding:5px;
+}
+
+body aside .place .place-photo{
+	float:left;
+	width:100px;
+	height:100px;
+}
+
+body aside .place .place-details{
+	float:left;
+	width:265px;
+	height:100px;
+	margin-left:5px;
+}
+
+body aside .place .place-details .place-title{
+	width:265px;
+	height:35px;
+	overflow: hidden; /* Обрезаем все, что не помещается в область */
+	font-weight: 700;
+	color:#337ab7;	
+}
+
+body aside .place .place-details .place-comment{
+	width:265px;
+	height:35px;
+	overflow: hidden; /* Обрезаем все, что не помещается в область */
+}
+
+body aside .place .place-details .place-tag{
+	width:265px;
+	height:30px;
+	font-size:9px;
+	padding-top:15px;
+}
+
+body aside .place .place-rating{
+	float:left;
+	width:40px;
+	height:100px;
+	margin-left:5px;
+}
+
+body section{
+	height:450px;
+}
+
+body section .map{
+	width:425px;
+	height:425px;
+	background-image:url(../image/map.jpg);
+	background-repeat:no-repeat;
+}
+
+body footer{
+	min-height:70px;
+	margin:-70px auto 0;
+	position:relative;
+}
+
+body footer .container{
+	width:940px;
+	height:70px;
+	padding:10px 15px;
+	background:#337ab7;
+}
+
+body footer .container .col-md-12{
+	margin:20px 0;
+}
+
+body footer .container p{
+	color:#fff;
+	text-align:center;
+}
+
+ .highlighted {
+	background: yellow;
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="appIdea">
+	<head>
+		<meta charset="utf-8">
+		<title>Idea</title>
+		<link href="css/normalize.css" rel="stylesheet">
+		<link href="css/bootstrap.styles.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body ng-controller="PlaceCtrl as placeCtrl">
+		<div class="container">
+			<header></header>
+			<nav>
+				<div id="filter-buttons" class="btn-group">
+					<filter-button click="placeCtrl.onClick(tag)" active="true">Все</filter-button>
+					<filter-button click="placeCtrl.onClick(tag)">Спорт</filter-button>
+					<filter-button click="placeCtrl.onClick(tag)">Транспорт</filter-button>
+					<filter-button click="placeCtrl.onClick(tag)">Культура</filter-button>
+				</div>
+			</nav>
+			<form class="navbar-form">
+				<div class="form-group">
+					<input type="text" id="pattern-search" class="form-control" placeholder="Найти..." ng-model="placeCtrl.searchText">
+				</div>
+			</form>
+			<div class="row">
+				<aside id="collection-places" class="col-md-6">
+					<div ng-repeat="place in placeCtrl.places | orderBy:'-Rating' | TagFilter:placeCtrl.tag | filter:placeCtrl.searchText">
+						<hr>																										
+							<div class="place">																						
+								<div class="place-photo">																			
+									<img src="image/photo.gif" alt="Place photo" class="img-circle">								
+								</div>																								
+								<div class="place-details">																			
+									<div class="place-title" ng-bind-html="place.Title | HighlightFilter:placeCtrl.searchText">
+									<!--{{place.Title}}-->																	
+									</div>																							
+									<div class="place-comment" ng-bind-html="place.Comment | HighlightFilter:placeCtrl.searchText">																		
+									<!--{{place.Comment}}-->																		
+									</div> 																							
+									<div class="place-tag">																			
+										<span class="glyphicon glyphicon-time" aria-hidden="true"></span><span>about a month ago</span>			
+										<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span>Admin</span>						
+										<a href="#">
+											<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+											<span ng-bind-html="place.Tag | HighlightFilter:placeCtrl.searchText"><!--{{place.Tag}}--></span>		
+										</a>																						
+									</div>
+								</div>
+								<div class="place-rating">																			
+									<h2>{{place.Rating}}</h2>																	
+								</div>								
+							</div>																									
+						<hr>
+					</div>						
+				</aside>
+				<section class="col-md-6">
+					<div class="map"></div>
+				</section>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p>У меня есть идея</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="js/jquery-2.1.3.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>		
+		<script src="js/places.json"></script>		
+		<script src="js/angular.min.js"></script>
+		<script src="js/appIdea.js"></script>			
+	</body>
+</html>
