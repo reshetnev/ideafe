@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="ideaApp">
+	<head>
+		<meta charset="utf-8">
+		<title>Idea</title>
+		<link href="bower_components/html5-boilerplate/css/normalize.css" rel="stylesheet">
+<!--	<link href="bower_components/html5-boilerplate/css/main.css" rel="stylesheet"> -->
+		<link href="css/bootstrap.styles.min.css" rel="stylesheet">
+		<link href="css/styles.css" rel="stylesheet">
+<!--	<script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script> -->
+	</head>
+	<body ng-controller="ideasCtrl as ideas">
+		<div class="container">
+			<header></header>
+			<nav>
+				<div id="tag-buttons" class="btn-group">
+					<tag-button click="ideas.clickTagButton(tag)" active="true">Все</tag-button>
+					<tag-button click="ideas.clickTagButton(tag)">Спорт</tag-button>
+					<tag-button click="ideas.clickTagButton(tag)">Транспорт</tag-button>
+					<tag-button click="ideas.clickTagButton(tag)">Культура</tag-button>
+				</div>
+			</nav>
+			<form class="navbar-form">
+				<div class="form-group">
+					<input type="text" id="pattern-search" class="form-control" placeholder="Найти..." ng-model="ideas.searchText">
+				</div>
+			</form>
+			<div class="row">
+				<aside id="collection-places" class="col-md-6">
+					<div ng-repeat="idea in ideas.ideasList | orderBy:'-Rating' | tagFilter:ideas.tag | filter:ideas.searchText">
+						<hr>																										
+							<div class="place">																						
+								<div class="place-photo">																			
+									<img src="image/photo.gif" alt="Place photo" class="img-circle">								
+								</div>																								
+								<div class="place-details">																			
+									<div class="place-title" ng-bind-html="idea.Title | highlightFilter:ideas.searchText">
+									<!--{{idea.Title}}-->																	
+									</div>																							
+									<div class="place-comment" ng-bind-html="idea.Comment | highlightFilter:ideas.searchText">																		
+									<!--{{idea.Comment}}-->																		
+									</div> 																							
+									<div class="place-tag">																			
+										<span class="glyphicon glyphicon-time" aria-hidden="true"></span><span>about a month ago</span>			
+										<span class="glyphicon glyphicon-user" aria-hidden="true"></span><span>Admin</span>						
+										<a>
+											<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+											<span ng-bind-html="idea.Tag | highlightFilter:ideas.searchText"><!--{{idea.Tag}}--></span>		
+										</a>																						
+									</div>
+								</div>
+								<div class="place-rating">
+									<div ng-click="ideas.changeRating(1, idea)" class="thumbs"><i class="glyphicon glyphicon-menu-up"></i></div>
+									<div>{{idea.Rating}}</div>
+									<div ng-click="ideas.changeRating(-1, idea)" class="thumbs"><i class="glyphicon glyphicon-menu-down"></i></div>
+								</div>								
+							</div>																									
+						<hr>
+					</div>						
+				</aside>
+				<section class="col-md-6">
+					<div class="map"></div>
+				</section>
+			</div>
+		</div>
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<p>У меня есть идея</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="bower_components\jquery\dist\jquery.min.js"></script>
+		<script src="bower_components\bootstrap\dist\js\bootstrap.min.js"></script>
+		<!-- In production use:
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+		-->		
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+        <!-- (minification) need build in production js/min/script.min.js !!!!!!!!!!!!!!!!!!!!!!!!!-->		
+		<script src="js/ideas/ideas.json"></script>
+		<script src="js/services.js"></script>		
+		<script src="js/app.js"></script>
+		<script src="js/ideas/ideas.controller.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/tags/tagButton.directive.js"></script>		
+		<script src="components/version/version.js"></script>
+		<script src="components/version/version-directive.js"></script>
+		<script src="components/version/interpolate-filter.js"></script>
+	</body>
+</html>
